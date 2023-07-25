@@ -1,8 +1,8 @@
 vim.g.mapleader = ","
 vim.keymap.set("n", "<leader>p", vim.cmd.Ex)
 --  Convenient vim binds and re-binds "
-vim.keymap.set("n", '<silent><F2>', ':tabp<CR>')
-vim.keymap.set("n", '<silent><F3>', ':tabn<CR>')
+vim.keymap.set("n", "<leader>2", ":tabp<CR>")
+vim.keymap.set("n", "<leader>3", ":tabn<CR>")
 
 --  move up and down by a page and center cursor
 --  ty primeagen
@@ -29,7 +29,3 @@ vim.keymap.set("n", "<leader>y", "\"+Y")
 -- " copy to clipboard and copy last yank to clipboard
 -- vim.keymap.set("x", <silent><F12> :!pbcopy <CR><CR>
 -- vim.keymap.set("n", <silent><F11> :call system('xclip -selection clipboard', @0)<CR>
-
--- " OTHER Plugin settings "
--- " vim-over
--- vim.keymap.set("n", <silent><C-h> :OverCommandLine<CR> %s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>

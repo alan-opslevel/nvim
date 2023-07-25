@@ -68,22 +68,27 @@ return require('packer').startup(function(use)
 		}
 	}
 
-	use('haya14busa/is.vim')
-	-- use('osyo-manga/vim-over')
-	use('rstacruz/vim-closer')
-	use('ap/vim-css-color')
+
+	-- additional lang Support
 	use('vim-ruby/vim-ruby')
 	use('posva/vim-vue')
 	use('fatih/vim-go', { run = ':GoUpdateBinaries' })
+
+	-- to comment in vue or jsx where commenting differs between sections of the page
 	use('tomtom/tcomment_vim')
-	use('lambdalisue/fern.vim')
+
+	-- havent used yet
+	-- use('lambdalisue/fern.vim')
 
 
-	-- nvim-autopairs
+	-- QOL
 	use {
 		"windwp/nvim-autopairs",
 		config = function() require("nvim-autopairs").setup {} end
 	}
+	use('haya14busa/is.vim')
+	use('rstacruz/vim-closer')
+	use('ap/vim-css-color')
 
 	-- null-ls
 	use('jose-elias-alvarez/null-ls.nvim')
