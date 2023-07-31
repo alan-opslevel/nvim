@@ -3,19 +3,22 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-	'tsserver',
-	'rust_analyzer',
+	'eslint',
 	'ruby_ls',
+	'solargraph',
 	'rubocop',
-	'sorbet',
 	'lua_ls',
 })
 
 -- Fix Undefined global 'vim'
 lsp.nvim_workspace()
 
-
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
+cmp.event:on(
+	'confirm_done',
+	cmp_autopairs.on_confirm_done()
+)
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 local cmp_mappings = lsp.defaults.cmp_mappings({
 	['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
@@ -61,9 +64,6 @@ lsp.format_on_save({
 	servers = {
 		['lua_ls'] = { 'lua' },
 		['rubocop'] = { 'ruby' },
-		['prettier'] = { 'javascript', 'typescript', 'vue' },
-		['prettierd'] = { 'javascript', 'typescript', 'vue' },
-		-- ['rust_analyzer'] = { 'rust' },
 		-- if you have a working setup with null-ls
 		-- you can specify filetypes it can format.
 	}

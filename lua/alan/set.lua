@@ -18,6 +18,7 @@ set.signcolumn = 'yes'
 -- set.clipboard = 'unnamed'
 set.backup = false
 set.writebackup = false
+set.swapfile = false
 set.updatetime = 50
 set.scrolloff = 10
 set.spelllang = 'en_ca'

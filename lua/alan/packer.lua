@@ -75,23 +75,45 @@ return require('packer').startup(function(use)
 	use('fatih/vim-go', { run = ':GoUpdateBinaries' })
 
 	-- to comment in vue or jsx where commenting differs between sections of the page
-	use('tomtom/tcomment_vim')
+	use {
+		'numToStr/Comment.nvim',
+		config = function()
+			require('Comment').setup()
+		end
+	}
 
 	-- havent used yet
 	-- use('lambdalisue/fern.vim')
+
+	-- gitsigns
+	use('lewis6991/gitsigns.nvim')
 
 
 	-- QOL
 	use {
 		"windwp/nvim-autopairs",
-		config = function() require("nvim-autopairs").setup {} end
+		config = function()
+			require("nvim-autopairs").setup()
+		end
 	}
+
+	-- autotags
+	use {
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end
+	}
+
+
 	use('haya14busa/is.vim')
-	use('rstacruz/vim-closer')
 	use('ap/vim-css-color')
 
+	-- formatter.nvim
+	use('mhartington/formatter.nvim')
+
 	-- null-ls
-	use('jose-elias-alvarez/null-ls.nvim')
+	-- use('jose-elias-alvarez/null-ls.nvim')
 
 	-- mason-null-ls.nvim
 	-- use {

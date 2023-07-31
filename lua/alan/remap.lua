@@ -26,6 +26,8 @@ vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>y", "\"+Y")
 
+-- format on save
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
 -- " copy to clipboard and copy last yank to clipboard
 -- vim.keymap.set("x", <silent><F12> :!pbcopy <CR><CR>
 -- vim.keymap.set("n", <silent><F11> :call system('xclip -selection clipboard', @0)<CR>
