@@ -41,10 +41,20 @@ return require('packer').startup(function(use)
 	use('tpope/vim-surround')
 	use('tpope/vim-vinegar')
 	use('tpope/vim-eunuch')
-	use('tpope/vim-commentary')
 	use('tpope/vim-rails')
-	use('tpope/vim-endwise')
 	use('tpope/vim-repeat')
+
+	-- endwise
+	use {
+		"RRethy/nvim-treesitter-endwise",
+		config = function()
+			require('nvim-treesitter.configs').setup {
+				endwise = {
+					enable = true,
+				},
+			}
+		end
+	}
 
 	-- lsp-zero
 	use {
@@ -69,11 +79,6 @@ return require('packer').startup(function(use)
 	}
 
 
-	-- additional lang Support
-	use('vim-ruby/vim-ruby')
-	use('posva/vim-vue')
-	use('fatih/vim-go', { run = ':GoUpdateBinaries' })
-
 	-- to comment in vue or jsx where commenting differs between sections of the page
 	use {
 		'numToStr/Comment.nvim',
@@ -81,9 +86,6 @@ return require('packer').startup(function(use)
 			require('Comment').setup()
 		end
 	}
-
-	-- havent used yet
-	-- use('lambdalisue/fern.vim')
 
 	-- gitsigns
 	use('lewis6991/gitsigns.nvim')
@@ -109,25 +111,28 @@ return require('packer').startup(function(use)
 	use('haya14busa/is.vim')
 	use('ap/vim-css-color')
 
-	-- formatter.nvim
-	use('mhartington/formatter.nvim')
 
 	-- null-ls
-	-- use('jose-elias-alvarez/null-ls.nvim')
+	-- use("jose-elias-alvarez/null-ls.nvim")
 
-	-- mason-null-ls.nvim
-	-- use {
-	-- 	"jay-babu/mason-null-ls.nvim",
-	-- 	event = { "BufReadPre", "BufNewFile" },
-	-- 	dependencies = {
-	-- 		"williamboman/mason.nvim",
-	-- 		"jose-elias-alvarez/null-ls.nvim",
-	-- 	},
-	-- 	config = function()
-	-- 		require("mason").setup()
-	-- 		require("mason-null-ls").setup({
-	-- 			handlers = {},
-	-- 		})
-	-- 	end,
-	-- }
+
+	-- neogit
+	use {
+		'NeogitOrg/neogit',
+		requires = {
+			{ "nvim-lua/plenary.nvim" },      -- required
+			{ "nvim-telescope/telescope.nvim" }, -- optional
+			{ "sindrets/diffview.nvim" },     -- optional
+		},
+		config = function()
+			require("neogit").setup()
+		end
+	}
+
+
+	-- vim visual multi
+	use("mg979/vim-visual-multi")
+
+	-- formatter.nvim
+	use("mhartington/formatter.nvim")
 end)
